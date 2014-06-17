@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script>
+        function setCookie (name, value, iDay) {
+            var oDate = new Date();
+            oDate.setDate(oDate.getDate() + iDay);
+
+            //document.cookie = "name=jiabin;expires=oDate";
+            document.cookie = name+"="+value+";expires="+oDate;
+        }
+
+        function getCookie (name) {
+            var arr = document.cookie.split("; ");
+
+            console.log(arr);
+
+            for ( var i = 0; i < arr.length; i++) {
+                var arr2 = arr[i].split("=");
+                console.log(arr2);
+                console.log(arr2[0]);
+
+                if (arr2[0] == name) {
+                    return arr2[1];
+                }
+            }
+
+            return "";
+        }
+
+        function removeCookie(name) {
+            setCookie(name, 1, -1);
+        }
+
+
+        setCookie("userName", "jiabin", 365);
+        setCookie("password", "1234456", 14);
+
+        console.log(getCookie("password"));
+        console.log(document.cookie);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
